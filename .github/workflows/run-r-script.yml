@@ -2,7 +2,7 @@ name: Run R Script
 
 on:
   schedule:
-    - cron: '30 12 * * *'  # каждый день в 9:00 UTC по Киеву это в 12:00
+    - cron: '0 13 * * *'  # каждый день в 9:00 UTC по Киеву это в 12:00
   workflow_dispatch:     # запуск вручную через GitHub UI
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Install packages
         run: |
-          Rscript -e 'install.packages("tidyverse", repos="https://cloud.r-project.org")'
+          Rscript -e 'install.packages(c("stringr", "telegram.bot"), repos="https://cloud.r-project.org")'
 
       - name: Run script
         run: |
