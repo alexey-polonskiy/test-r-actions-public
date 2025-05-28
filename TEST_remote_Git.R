@@ -17,7 +17,14 @@ rm(list=ls())
 #####################################################################
 # Подключаю библиотеки
 #....................................................................
+if (!requireNamespace("telegram.bot", quietly = TRUE)) {
+  install.packages("telegram.bot", repos = "https://cloud.r-project.org")
+}
 library(telegram.bot) # операции с телеграм ботом
+
+if (!requireNamespace("stringr", quietly = TRUE)) {
+  install.packages("stringr", repos = "https://cloud.r-project.org")
+}
 library(stringr) # работа с текстом
 #####################################################################
 
