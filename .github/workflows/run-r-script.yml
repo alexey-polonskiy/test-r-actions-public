@@ -1,0 +1,21 @@
+name: Run R Script
+
+on:
+  schedule:
+    - cron: '30 12 * * *'  # каждый день в 9:00 UTC по Киеву это в 12:00
+  workflow_dispatch:     # запуск вручную через GitHub UI
+
+jobs:
+  run-r:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Install packages
+        run: |
+          Rscript -e 'install.packages("tidyverse", repos="https://cloud.r-project.org")'
+
+      - name: Run script
+        run: |
+          Rscript TEST_remote_Git.R
